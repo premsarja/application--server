@@ -1,19 +1,13 @@
 - name: Manage firewall using ufw
   hosts: all
-  become: yes  
+  become: yes  # Ensure appropriate privileges are set
 
   tasks:
     - name: Enable SSH (port 22) using ufw
       ansible.builtin.command: ufw allow 22
-      args:
-        executable: /usr/sbin/ufw  # Specify the full path to ufw if needed
 
     - name: Enable HTTP (port 80) using ufw
       ansible.builtin.command: ufw allow 80/tcp
-      args:
-        executable: /usr/sbin/ufw
 
     - name: Enable HTTPS (port 443) using ufw
       ansible.builtin.command: ufw allow 443/tcp
-      args:
-        executable: /usr/sbin/ufw
