@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   vars:
-    ansible_python_interpreter: /usr/bin/python  # or the path to a compatible Python interpreter
+    ansible_python_interpreter: /usr/bin/python3  # or the path to a compatible Python interpreter
   tasks:
     - name: Allow SSH (port 22) in firewalld
       ansible.builtin.firewalld:
