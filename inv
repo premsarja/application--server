@@ -1,0 +1,2 @@
+[all]
+172.31.28.133 ansible_user=ansible ansible_password=ansible
