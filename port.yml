@@ -1,6 +1,6 @@
 - name: Ensure required ports are open
-  hosts: your_target_hosts
-  become: yes  # Assuming sudo privileges are required
+  hosts: all
+  become: yes  
 
   tasks:
     - name: Open SSH (port 22) in the firewall
