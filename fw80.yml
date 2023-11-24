@@ -15,8 +15,8 @@
           -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
           COMMIT
           # Completed on Fri Nov 24 09:58:13 2023
-        dest: /tmp/iptables_rules  # Save the rules to a temporary file
+        dest: /tmp/iptables_rules
         remote_src: yes
 
-- name: Apply iptables rules from the temporary file
-  ansible.builtin.shell: iptables-restore /tmp/iptables_rules
+    - name: Apply iptables rules from the temporary file
+      ansible.builtin.shell: iptables-restore --noflush /tmp/iptables_rules
