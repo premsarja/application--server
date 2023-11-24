@@ -1,23 +1,19 @@
-- name: Open ports 22, 80, 443 in firewall
-  hosts: all
-  become: yes
+- name: Manage firewall using ufw
+  hosts: your_target_hosts
+  become: yes  # Ensure appropriate privileges are set
 
   tasks:
-    - name: Open port 22 (SSH)
-      ansible.builtin.firewalld:
-        service: ssh
-        permanent: yes
-        state: enabled
+    - name: Enable SSH (port 22) using ufw
+      ansible.builtin.command: ufw allow 22
+      args:
+        executable: /usr/sbin/ufw  # Specify the full path to ufw if needed
 
-    - name: Open port 80 (HTTP)
-      ansible.builtin.firewalld:
-        port: 80/tcp
-        permanent: yes
-        state: enabled
+    - name: Enable HTTP (port 80) using ufw
+      ansible.builtin.command: ufw allow 80/tcp
+      args:
+        executable: /usr/sbin/ufw
 
-    - name: Open port 443 (HTTPS)
-      ansible.builtin.firewalld:
-        port: 443/tcp
-        permanent: yes
-        state: enabled
-
+    - name: Enable HTTPS (port 443) using ufw
+      ansible.builtin.command: ufw allow 443/tcp
+      args:
+        executable: /usr/sbin/ufw
