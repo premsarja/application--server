@@ -17,5 +17,5 @@
           COMMIT
           # Completed on Fri Nov 24 09:58:13 2023
         "
-        echo $X > iptables  
-        sudo iptables-restore < iptables
+        echo "$X" > iptables  
+        iptables-restore < iptables
