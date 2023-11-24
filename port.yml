@@ -1,7 +1,8 @@
 - name: Open port 22 in firewalld
-  hosts: all  # Replace with your target host or group
-  become: yes  # Ensure appropriate privileges are set
-
+  hosts: all
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python  # or the path to a compatible Python interpreter
   tasks:
     - name: Allow SSH (port 22) in firewalld
       ansible.builtin.firewalld:
