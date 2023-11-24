@@ -1,0 +1,13 @@
+- name: Ensure required ports are open
+  hosts: your_target_hosts
+  become: yes  # Assuming sudo privileges are required
+
+  tasks:
+    - name: Open SSH (port 22) in the firewall
+      ansible.builtin.command: ufw allow 22
+
+    - name: Open HTTP (port 80) in the firewall
+      ansible.builtin.command: ufw allow 80
+
+    - name: Open HTTPS (port 443) in the firewall
+      ansible.builtin.command: ufw allow 443
