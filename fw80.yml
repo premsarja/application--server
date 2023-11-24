@@ -2,10 +2,6 @@
   hosts: all
   become: yes
   tasks:
- - name: Open ports using iptables
-  hosts: all
-  become: yes
-  tasks:
     - name: Add iptables rules
       ansible.builtin.shell: |
         X="
