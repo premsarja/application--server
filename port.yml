@@ -1,11 +1,7 @@
-- name: Open port 22 in firewalld
-  hosts: all
+- name: Open port 22 using iptables
+  hosts: your_target_host
   become: yes
-  vars:
-    ansible_python_interpreter: /usr/bin/python3  # or the path to a compatible Python interpreter
+
   tasks:
-    - name: Allow SSH (port 22) in firewalld
-      ansible.builtin.firewalld:
-        port: 22/tcp
-        permanent: yes
-        state: enabled
+    - name: Allow SSH (port 22) using iptables
+      ansible.builtin.command: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
