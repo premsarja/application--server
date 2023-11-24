@@ -1,13 +1,23 @@
-- name: Ensure required ports are open
+- name: Open ports 22, 80, 443 in firewall
   hosts: all
-  become: yes  
+  become: yes
 
   tasks:
-    - name: Open SSH (port 22) in the firewall
-      ansible.builtin.command: ufw allow 22
+    - name: Open port 22 (SSH)
+      ansible.builtin.firewalld:
+        service: ssh
+        permanent: yes
+        state: enabled
 
-    - name: Open HTTP (port 80) in the firewall
-      ansible.builtin.command: ufw allow 80
+    - name: Open port 80 (HTTP)
+      ansible.builtin.firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
 
-    - name: Open HTTPS (port 443) in the firewall
-      ansible.builtin.command: ufw allow 443
+    - name: Open port 443 (HTTPS)
+      ansible.builtin.firewalld:
+        port: 443/tcp
+        permanent: yes
+        state: enabled
+
