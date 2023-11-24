@@ -1,6 +1,6 @@
 - name: Manage firewall using ufw
-  hosts: your_target_hosts
-  become: yes  # Ensure appropriate privileges are set
+  hosts: all
+  become: yes  
 
   tasks:
     - name: Enable SSH (port 22) using ufw
