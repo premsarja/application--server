@@ -5,3 +5,4 @@
   tasks:
     - name: Allow SSH (port 22) using iptables
       ansible.builtin.command: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+      
