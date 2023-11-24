@@ -1,13 +1,25 @@
-- name: Manage firewall using iptables
-  hosts: all
-  become: yes
+- name: Open ports in iptables
+  hosts: your_target_hosts
+  become: yes  # Ensure appropriate privileges are set
 
   tasks:
-    - name: Allow SSH (port 22) using iptables
-      ansible.builtin.command: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+    - name: Allow SSH (port 22) in iptables
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: tcp
+        port: 22
+        jump: ACCEPT
 
-    - name: Allow HTTP (port 80) using iptables
-      ansible.builtin.command: iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+    - name: Allow HTTP (port 80) in iptables
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: tcp
+        port: 80
+        jump: ACCEPT
 
-    - name: Allow HTTPS (port 443) using iptables
-      ansible.builtin.command: iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+    - name: Allow HTTPS (port 443) in iptables
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: tcp
+        port: 443
+        jump: ACCEPT
