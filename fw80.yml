@@ -3,8 +3,8 @@
   become: yes
   tasks:
     - name: Add iptables rules
-      ansible.builtin.shell: |
-        X="
+      iptables:
+        rules: |
           *filter
           :INPUT ACCEPT [0:0]
           :FORWARD ACCEPT [0:0]
@@ -13,5 +13,8 @@
           -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
           -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
           COMMIT
-        "
-        echo "$X" | sudo iptables-restore --noflush
+        state: present
+      register: result
+
+    - debug:
+        var: result
