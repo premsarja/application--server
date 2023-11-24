@@ -1,25 +1,10 @@
-- name: Open ports in iptables
-  hosts: all
-  become: yes
+- name: Open port 22 in firewalld
+  hosts: all  # Replace with your target host or group
+  become: yes  # Ensure appropriate privileges are set
 
   tasks:
-    - name: Allow SSH (port 22) in iptables
-      ansible.builtin.iptables:
-        chain: INPUT
-        protocol: tcp
-        port: 22
-        jump: ACCEPT
-
-    - name: Allow HTTP (port 80) in iptables
-      ansible.builtin.iptables:
-        chain: INPUT
-        protocol: tcp
-        port: 80
-        jump: ACCEPT
-
-    - name: Allow HTTPS (port 443) in iptables
-      ansible.builtin.iptables:
-        chain: INPUT
-        protocol: tcp
-        port: 443
-        jump: ACCEPT
+    - name: Allow SSH (port 22) in firewalld
+      ansible.builtin.firewalld:
+        port: 22/tcp
+        permanent: yes
+        state: enabled
