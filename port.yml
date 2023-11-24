@@ -1,6 +1,6 @@
 - name: Open ports in iptables
   hosts: your_target_hosts
-  become: yes  # Ensure appropriate privileges are set
+  become: yes
 
   tasks:
     - name: Allow SSH (port 22) in iptables
