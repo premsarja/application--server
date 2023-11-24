@@ -18,5 +18,5 @@
         dest: /tmp/iptables_rules  # Save the rules to a temporary file
         remote_src: yes
 
-    - name: Apply iptables rules from the temporary file
-      ansible.builtin.shell: iptables-restore /tmp/iptables_rules
+- name: Apply iptables rules from the temporary file
+  ansible.builtin.shell: iptables-restore /tmp/iptables_rules
