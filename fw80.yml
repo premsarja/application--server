@@ -19,4 +19,4 @@
         remote_src: yes
 
     - name: Apply iptables rules from the temporary file
-      ansible.builtin.command: iptables-restore < /tmp/iptables_rules
+      ansible.builtin.shell: iptables-restore /tmp/iptables_rules
