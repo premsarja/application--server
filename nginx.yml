@@ -1,6 +1,6 @@
 - name: nginx installation
   hosts: all
   tasks:
-    - name: nginx
-      ansible.builtin.package:
-      state: present
+     name: nginx
+     ansible.builtin.package:
+     state: present
