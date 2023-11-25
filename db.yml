@@ -3,7 +3,7 @@
   become: yes
   tasks:
      - name: installing iptables 
-        ansible.builtin.package:
+       ansible.builtin.package:
            name: iptables
            state: present 
 
