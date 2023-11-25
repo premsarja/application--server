@@ -1,17 +1,9 @@
-- name: Open ports 22 and 5432 using firewalld
+- name: Open port 22 using iptables
   hosts: db
   become: yes
   tasks:
-    - name: Allow SSH (port 22) using firewalld
-      ansible.builtin.firewalld:
-        port: 22/tcp
-        state: enabled
-        permanent: yes
-        immediate: yes
-
-    - name: Allow PostgreSQL (port 5432) using firewalld
-      ansible.builtin.firewalld:
-        port: 5432/tcp
-        state: enabled
-        permanent: yes
-        immediate: yes
+     - name: Allow SSH (port 22) using iptables
+       ansible.builtin.command: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+      
+     - name: Allow SSH (port 5432) using iptables
+       ansible.builtin.command: iptables -A INPUT -p tcp --dport 5432 -j ACCEPT
